@@ -1,4 +1,3 @@
-![Image]https://imgur.com/a/JBpJxmK
-# Original Title
+![Image] (https://imgur.com/a/JBpJxmK) 
 
 Existing content of the README file would go here...
