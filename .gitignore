@@ -1,0 +1,28 @@
+# Python standard ignores
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+
+# Distribution / Packaging
+.Python
+env/
+venv/
+bin/
+lib/
+include/
+share/
+*.whl
+
+# Python test files
+.test/
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+*.log
